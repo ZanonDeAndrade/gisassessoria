@@ -64,10 +64,6 @@ const Hero = () => {
 
             <div className="flex items-center space-x-8 pt-8">
               <div className="text-center">
-                <div className="text-3xl font-bold text-primary">500+</div>
-                <div className="text-sm text-muted-foreground">Clientes Atendidos</div>
-              </div>
-              <div className="text-center">
                 <div className="text-3xl font-bold text-primary">15+</div>
                 <div className="text-sm text-muted-foreground">Anos de Experiência</div>
               </div>

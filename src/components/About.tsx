@@ -23,9 +23,8 @@ const About = () => {
   ];
 
   const achievements = [
-    "Mais de x empresas atendidas",
-    "x anos de experiência no mercado",
-    "Equipe especializada e certificada", 
+    "Mais de 15 anos de experiência no mercado",
+    "Equipe especializada", 
     "Atendimento personalizado para cada cliente"
   ];
 
@@ -48,7 +47,7 @@ const About = () => {
               Sua <span className="text-primary ">Parceria Estratégica</span> em Contabilidade
             </h2>
             <p className="text-lg text-muted-foreground mb-8 ">
-              Fundado em ......., a Gis Assessoria Contábil nasceu com o propósito de revolucionar 
+              Fundado em 2010, a Gis Assessoria Contábil nasceu com o propósito de revolucionar 
               a prestação de serviços contábeis, combinando tradição, inovação e 
               excelência no atendimento.
             </p>
@@ -92,15 +91,8 @@ const About = () => {
               
               <div className="absolute -top-6 -left-6 bg-background p-6 rounded-2xl shadow-elegant border">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-primary">x+</div>
+                  <div className="text-3xl font-bold text-primary">15 +</div>
                   <div className="text-sm text-muted-foreground">Anos</div>
-                </div>
-              </div>
-              
-              <div className="absolute -bottom-6 -right-6 bg-background p-6 rounded-2xl shadow-elegant border">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-accent">500+</div>
-                  <div className="text-sm text-muted-foreground">Clientes</div>
                 </div>
               </div>
             </div>

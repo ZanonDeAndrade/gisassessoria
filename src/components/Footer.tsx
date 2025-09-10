@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin } from "lucide-react";
+import logoGis from "../assets/logoGis.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -23,8 +24,7 @@ const Footer = () => {
       { label: "Entre em Contato", href: "#contact" },
       { label: "FAQ", href: "#faq" },
       { label: "Política de Privacidade", href: "#" },
-      { label: "Termos de Uso", href: "#" },
-      { label: "Newsletter", href: "#news" }
+      { label: "Termos de Uso", href: "#" }
     ]
   };
 
@@ -37,34 +37,24 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-primary text-primary-foreground">
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid lg:grid-cols-4 gap-8">
+    <footer className="bg-gray-500 text-primary-foreground">
+      <div className="container mx-auto px-4 py-16 text-center">
+        <div className="grid lg:grid-cols-3 gap-8 justify-center">
           {/* Company Info */}
-          <div className="space-y-6">
-            <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-accent rounded-lg flex items-center justify-center">
-                <span className="text-accent-foreground font-bold text-lg">C</span>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold">ContabilCorp</h3>
-                <p className="text-sm text-primary-foreground/80">Escritório de Contabilidade</p>
-              </div>
+          <div className="space-y-6 flex flex-col items-center">
+            <div className="flex items-center justify-center space-x-2">
+              <img src={logoGis} alt="Logo GIS" className="w-40 h-20" />
             </div>
-            <p className="text-primary-foreground/80">
-              Há mais de 15 anos oferecendo soluções contábeis de excelência, 
-              ajudando empresas a crescerem com segurança e eficiência.
-            </p>
-            <div className="space-y-3">
-              <div className="flex items-center space-x-3">
+            <div className="space-y-3 text-center">
+              <div className="flex justify-center items-center space-x-3">
                 <MapPin className="h-4 w-4 text-accent" />
                 <span className="text-sm">Rua das Empresas, 1234 - São Paulo/SP</span>
               </div>
-              <div className="flex items-center space-x-3">
+              <div className="flex justify-center items-center space-x-3">
                 <Phone className="h-4 w-4 text-accent" />
                 <span className="text-sm">(11) 3456-7890</span>
               </div>
-              <div className="flex items-center space-x-3">
+              <div className="flex justify-center items-center space-x-3">
                 <Mail className="h-4 w-4 text-accent" />
                 <span className="text-sm">contato@contabilcorp.com.br</span>
               </div>
@@ -104,48 +94,26 @@ const Footer = () => {
               ))}
             </ul>
           </div>
-
-          {/* Support & Newsletter */}
-          <div>
-            <h4 className="text-lg font-semibold mb-6">Suporte</h4>
-            <ul className="space-y-3 mb-6">
-              {footerLinks.support.map((link, index) => (
-                <li key={index}>
-                  <button
-                    onClick={() => scrollToSection(link.href)}
-                    className="text-primary-foreground/80 hover:text-accent transition-smooth text-sm"
-                  >
-                    {link.label}
-                  </button>
-                </li>
-              ))}
-            </ul>
-            
-            <div className="space-y-4">
-              <h5 className="font-medium">Newsletter</h5>
-              <div className="flex space-x-2">
-                <input
-                  type="email"
-                  placeholder="Seu e-mail"
-                  className="flex-1 px-3 py-2 text-sm rounded-lg bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/60 focus:outline-none focus:ring-2 focus:ring-accent"
-                />
-                <Button variant="accent" size="sm">
-                  OK
-                </Button>
-              </div>
-            </div>
-          </div>
         </div>
 
+        {/* Bottom section */}
         <div className="border-t border-primary-foreground/20 mt-12 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+          <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-6">
             <div className="text-sm text-primary-foreground/80">
-              © {currentYear} Gis Assessoria Contábil. Todos os direitos reservados. || Desenvolvido por <a href="https://www.linkedin.com/in/gustavoinacio/" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">Arthur Zanon</a>
+              © {currentYear} Gis Assessoria Contábil. Todos os direitos reservados. || Desenvolvido por{" "}
+              <a
+                href="https://www.linkedin.com/in/gustavoinacio/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline"
+              >
+                Arthur Zanon
+              </a>
             </div>
-            
+
             <div className="flex items-center space-x-4">
               <span className="text-sm text-primary-foreground/80">Siga-nos:</span>
-              <div className="flex space-x-3">
+              <div className="flex space-x-3 justify-center">
                 <Button variant="ghost" size="icon" className="h-8 w-8 text-primary-foreground/80 hover:text-accent">
                   <Facebook className="h-4 w-4" />
                 </Button>
@@ -161,8 +129,7 @@ const Footer = () => {
 
           <div className="mt-6 pt-6 border-t border-primary-foreground/20 text-center">
             <p className="text-xs text-primary-foreground/60">
-              CNPJ: 12.345.678/0001-90 | 
-              Responsável Técnico: João Silva - CRC/SP 1SP234567
+              CNPJ: 12.345.678/0001-90 | Responsável Técnico: João Silva - CRC/SP 1SP234567
             </p>
           </div>
         </div>

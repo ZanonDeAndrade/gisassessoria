@@ -30,21 +30,21 @@ const Contact = () => {
       icon: Phone,
       title: "Telefone",
       description: "Fale diretamente conosco",
-      value: "(11) 3456-7890",
-      action: "Ligar Agora"
+      value: "(55) 3263-2363",
+      action: "Entre em contato"
     },
     {
       icon: MessageSquare,
       title: "WhatsApp",
-      description: "Atendimento rápido",
-      value: "(11) 98765-4321",
-      action: "Enviar Mensagem"
+      description: "Mande mensagem",
+      value: "(55)9 9977-9482",
+      action: "WhatsApp"
     },
     {
       icon: Mail,
       title: "E-mail",
       description: "Envie sua dúvida",
-      value: "contato@contabilcorp.com.br",
+      value: "atendimento@gisassessoriacontabil.com.br",
       action: "Enviar E-mail"
     }
   ];
@@ -90,9 +90,9 @@ const Contact = () => {
         <div className="grid lg:grid-cols-2 gap-12">
           <Card className="bg-gradient-card border-0 shadow-card">
             <CardHeader>
-              <CardTitle className="text-2xl text-muted-foreground">Solicite uma Consultoria Gratuita</CardTitle>
+              <CardTitle className="text-2xl text-muted-foreground">Solicite uma Consultoria</CardTitle>
               <p className="text-muted-foreground ">
-                Preencha o formulário e entraremos em contato em até 24 horas.
+                Preencha o formulário e entraremos em contato.
               </p>
             </CardHeader>
             <CardContent>
@@ -174,9 +174,9 @@ const Contact = () => {
           </Card>
 
           <div className="space-y-8">
-            <Card className="bg-primary text-primary-foreground border-0 shadow-elegant">
-              <CardContent className="p-8">
-                <h3 className="text-2xl font-bold mb-4">Por que escolher a ContabilCorp?</h3>
+            <Card className="bg-text-primary-foreground border-0 shadow-elegant">
+              <CardContent className="p-8 bg-gradient-card text-muted-foreground">
+                <h3 className="text-2xl font-bold mb-4">Por que escolher a Gis Assessoria Contábil?</h3>
                 <ul className="space-y-3">
                   <li className="flex items-center space-x-3">
                     <CheckCircle className="h-5 w-5 text-accent flex-shrink-0" />
@@ -188,7 +188,7 @@ const Contact = () => {
                   </li>
                   <li className="flex items-center space-x-3">
                     <CheckCircle className="h-5 w-5 text-accent flex-shrink-0" />
-                    <span>Equipe especializada e certificada</span>
+                    <span>Equipe especializada</span>
                   </li>
                   <li className="flex items-center space-x-3">
                     <CheckCircle className="h-5 w-5 text-accent flex-shrink-0" />

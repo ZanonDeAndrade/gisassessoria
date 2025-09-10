@@ -1,6 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { MapPin, Phone, Mail, Clock, Car, Bus } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Package } from "lucide-react";
 
 const Location = () => {
   return (
@@ -14,12 +14,12 @@ const Location = () => {
             Venha <span className="text-primary">Nos Conhecer</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Nosso escritório está estrategicamente localizado no centro empresarial, 
-            com fácil acesso e estacionamento disponível.
+            Nosso escritório está localizado no centro de Faxinal do Soturno
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
+          {/* Coluna esquerda */}
           <div className="space-y-8">
             <Card className="bg-gradient-card border-0 shadow-card">
               <CardHeader>
@@ -30,23 +30,25 @@ const Location = () => {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div>
-                  <p className="font-medium text-muted-foreground">Rua das Empresas, 1234</p>
-                  <p className="text-muted-foreground">Centro Empresarial, Sala 501</p>
-                  <p className="text-muted-foreground">São Paulo - SP, 01234-567</p>
+                  <p className="font-medium text-muted-foreground">
+                    Rua Júlio de Castilhos, 849
+                  </p>
+                  <p className="text-muted-foreground">Centro, Sala 849</p>
+                  <p className="text-muted-foreground">
+                    Faxinal do Soturno - RS, 97220-000
+                  </p>
                 </div>
                 <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-                  <Car className="h-4 w-4" />
-                  <span>Estacionamento próprio disponível</span>
-                </div>
-                <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-                  <Bus className="h-4 w-4" />
-                  <span>Próximo ao metrô Liberdade (Linha 1)</span>
+                  <Package className="h-4 w-4" />
+                  <span>Em frente aos Correios</span>
                 </div>
               </CardContent>
             </Card>
 
-            <div className="grid md:grid-cols-2 gap-6">
-              <Card className="bg-gradient-card border-0 shadow-card">
+            {/* Telefones + E-mails */}
+            <div className="grid md:grid-cols-3 gap-7">
+              {/* Telefones ocupa 1 coluna */}
+              <Card className="bg-gradient-card border-0 shadow-card md:col-span-1">
                 <CardHeader>
                   <CardTitle className="flex items-center space-x-3 text-muted-foreground">
                     <Phone className="h-5 w-5 text-primary " />
@@ -55,17 +57,18 @@ const Location = () => {
                 </CardHeader>
                 <CardContent className="space-y-2 text-muted-foreground">
                   <div>
-                    <p className="font-medium">(11) 3456-7890</p>
-                    <p className="text-sm text-muted-foreground">Linha principal</p>
+                    <p className="font-medium">(55)9 9977-9482</p>
+                    <p className="text-sm text-muted-foreground">WhatsApp</p>
                   </div>
                   <div>
-                    <p className="font-medium">(11) 98765-4321</p>
-                    <p className="text-sm text-muted-foreground">WhatsApp</p>
+                    <p className="font-medium">(55) 3263-2363</p>
+                    <p className="text-sm text-muted-foreground">Telefone Fixo</p>
                   </div>
                 </CardContent>
               </Card>
 
-              <Card className="bg-gradient-card border-0 shadow-card">
+              {/* E-mails ocupa 2 colunas */}
+              <Card className="bg-gradient-card border-0 shadow-card md:col-span-2">
                 <CardHeader>
                   <CardTitle className="flex items-center space-x-3 text-muted-foreground">
                     <Mail className="h-5 w-5 text-primary" />
@@ -74,17 +77,22 @@ const Location = () => {
                 </CardHeader>
                 <CardContent className="space-y-2 text-muted-foreground">
                   <div>
-                    <p className="font-medium">contato@contabilcorp.com.br</p>
+                    <p className="font-medium break-words">
+                      atendimento@gisassessoriacontabil.com.br
+                    </p>
                     <p className="text-sm text-muted-foreground">Atendimento geral</p>
                   </div>
                   <div>
-                    <p className="font-medium">comercial@contabilcorp.com.br</p>
-                    <p className="text-sm text-muted-foreground">Novos clientes</p>
+                    <p className="font-medium break-words">
+                      gilberto.scolari@gisassessoriacontabil.com.br
+                    </p>
+                    <p className="text-sm text-muted-foreground">Contador</p>
                   </div>
                 </CardContent>
               </Card>
             </div>
 
+            {/* Horário */}
             <Card className="bg-gradient-card border-0 shadow-card">
               <CardHeader>
                 <CardTitle className="flex items-center space-x-3 text-muted-foreground">
@@ -95,36 +103,30 @@ const Location = () => {
               <CardContent className="space-y-3 text-muted-foreground">
                 <div className="flex justify-between items-center">
                   <span className="font-medium">Segunda a Sexta</span>
-                  <span className="text-muted-foreground">8h00 às 18h00</span>
+                  <span className="text-muted-foreground">07:30 às 18h00</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="font-medium">Sábado</span>
-                  <span className="text-muted-foreground">8h00 às 12h00</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="font-medium">Domingo</span>
+                  <span className="font-medium">Sábado e Domingo</span>
                   <span className="text-muted-foreground">Fechado</span>
                 </div>
               </CardContent>
             </Card>
           </div>
 
-          <div className="space-y-6">
+          {/* Coluna direita - Street View da Fachada */}
+          <div className="space-y-6 lg:pl-12">
             <div className="bg-gradient-card rounded-2xl p-4 shadow-card">
-              <div className="bg-muted rounded-xl h-[400px] flex items-center justify-center">
-                <div className="text-center space-y-4">
-                  <MapPin className="h-16 w-16 text-primary mx-auto" />
-                  <div>
-                    <h3 className="text-xl font-semibold mb-2">Mapa Interativo</h3>
-                    <p className="text-muted-foreground">
-                      Visualize nossa localização e planeje sua visita
-                    </p>
-                  </div>
-                  <div className="text-sm text-muted-foreground">
-                    <p>Rua das Empresas, 1234</p>
-                    <p>Centro Empresarial - São Paulo/SP</p>
-                  </div>
-                </div>
+              <div className="rounded-xl overflow-hidden h-[450px]">
+                <iframe
+                  title="Fachada GIS Assessoria Contábil"
+                  src="https://www.google.com/maps/embed?pb=!4v1725504799183!6m8!1m7!1sCAoSLEFGMVFpcFBueW83dGtsSDRVcDg1ckxNVkxheS1fM0FoYnF1NUh6WHdjdHkt!2m2!1d-29.5786997!2d-53.4447395!3f159.65!4f0!5f0.7820865974627469"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
               </div>
             </div>
           </div>
