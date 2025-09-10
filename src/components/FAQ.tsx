@@ -11,7 +11,7 @@ const FAQ = () => {
     },
     {
       question: "Com que frequência recebo relatórios financeiros?",
-      answer: "Fornecemos relatórios mensais obrigatórios e relatórios gerenciais personalizados que podem ser entregues com a frequência que sua empresa necessitar (mensal, trimestral ou anual). Também oferecemos acesso online em tempo real aos principais indicadores."
+      answer: "Fornecemos relatórios mensais obrigatórios e relatórios gerenciais personalizados que podem ser entregues com a frequência que sua empresa necessitar (mensal, trimestral ou anual)."
     },
     {
       question: "Vocês atendem empresas de todos os portes?",
@@ -19,23 +19,15 @@ const FAQ = () => {
     },
     {
       question: "Como funciona o atendimento e comunicação?",
-      answer: "Oferecemos múltiplos canais de atendimento: telefone, WhatsApp, e-mail e presencial. Cada cliente tem um contador responsável designado para garantir continuidade e conhecimento profundo do negócio. Também disponibilizamos portal online para consultas."
+      answer: "Oferecemos múltiplos canais de atendimento: telefone, WhatsApp, e-mail e presencial. Cada cliente tem um colaborador para garantir continuidade e conhecimento profundo do negócio."
     },
     {
       question: "Quais são os prazos para entrega das obrigações?",
-      answer: "Cumprimos rigorosamente todos os prazos legais. As declarações são enviadas sempre com antecedência mínima de 48 horas do vencimento. Fornecemos cronograma anual com todas as datas importantes para seu negócio."
+      answer: "Cumprimos rigorosamente todos os prazos legais. As declarações são enviadas sempre com antecedência."
     },
     {
       question: "Vocês ajudam na escolha do regime tributário?",
-      answer: "Sim, realizamos estudo detalhado para identificar o regime tributário mais vantajoso para sua empresa (Simples Nacional, Lucro Presumido ou Lucro Real). Fazemos simulações anuais para garantir que você sempre esteja na melhor opção."
-    },
-    {
-      question: "Como funciona o processo de migração de outro escritório?",
-      answer: "O processo é simples e seguro. Cuidamos de toda a transição, solicitando documentos ao escritório anterior, fazendo análise da situação atual e adequando tudo aos nossos padrões de qualidade. O processo geralmente leva de 15 a 30 dias."
-    },
-    {
-      question: "Qual é o diferencial da ContabilCorp?",
-      answer: "Nosso diferencial está na combinação de experiência (15+ anos), tecnologia avançada, atendimento personalizado e equipe especializada. Oferecemos consultoria estratégica além dos serviços básicos, ajudando nossos clientes a tomar decisões mais assertivas."
+      answer: "Sim, realizamos estudo detalhado para identificar o regime tributário mais vantajoso para sua empresa (Simples Nacional, Lucro Presumido ou Lucro Real). Fazemos análise para garantir que você sempre esteja na melhor opção."
     }
   ];
 
@@ -94,10 +86,10 @@ const FAQ = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="default" size="lg" onClick={scrollToContact}>
-                Fale com um Especialista
+                Entre em contato conosco
               </Button>
               <Button variant="outline" size="lg">
-                WhatsApp: (11) 98765-4321
+                WhatsApp: (55) 9 9977-9482
               </Button>
             </div>
           </div>

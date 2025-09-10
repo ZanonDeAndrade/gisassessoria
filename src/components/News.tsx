@@ -6,37 +6,37 @@ import { Calendar, ArrowRight, TrendingUp, AlertTriangle, FileText } from "lucid
 const News = () => {
   const news = [
     {
-      category: "Tributário",
-      title: "Mudanças no Simples Nacional 2024",
-      description: "Novas regras e limites para enquadramento no Simples Nacional entram em vigor.",
-      date: "15 de Dezembro, 2024",
+      category: "Eleitoral",
+      title: "Contabilidade de campanhas eleitorais",
+      description: "Com a aproximação de um novo período eleitoral, a prestação de contas é obrigatória",
+      date: "09/09/2025",
       type: "Atualização",
       icon: TrendingUp,
       isUrgent: false
     },
     {
-      category: "Compliance",
-      title: "EFD-Reinf: Prazo Final se Aproxima",
-      description: "Empresas têm até 31 de dezembro para adequação às novas obrigações.",
-      date: "10 de Dezembro, 2024",
+      category: "Tributário",
+      title: "Novas medidas de combate a crimes tributários",
+      description: "Norma publicada em 29 de agosto de 2025 amplia obrigações de instituições de pagamento na e-Financeira.",
+      date: "29/08/2025",
       type: "Urgente",
       icon: AlertTriangle,
       isUrgent: true
     },
     {
-      category: "Trabalhista",
-      title: "eSocial: Novas Funcionalidades",
-      description: "Plataforma recebe atualizações importantes para gestão de folha de pagamento.",
-      date: "5 de Dezembro, 2024",
+      category: "Geral",
+      title: "Mudança no IR, saiba os impactos",
+      description: "Está em análise no Congresso Nacional, uma proposta da equipe econômica que pretende tornar os trabalhadores com carteira assinada que ganham R$ 5 mil mensalmente os mais beneficiados pela mudança do Imposto de Renda (IR).",
+      date: "08/08/2025",
       type: "Novidade",
       icon: FileText,
       isUrgent: false
     },
     {
-      category: "Contábil",
-      title: "SPED Contábil: Alterações no Layout",
-      description: "Receita Federal anuncia mudanças na estrutura do arquivo digital.",
-      date: "28 de Novembro, 2024",
+      category: "Previdenciária",
+      title: "Câmara aprova projeto que proíbe descontos sindicais em benefícios do INSS",
+      description: "Nova regra veta cobrança de mensalidades de sindicatos e associações diretamente na folha de aposentados e pensionistas, mesmo com autorização prévia.",
+      date: "05/09/2025",
       type: "Informativo",
       icon: FileText,
       isUrgent: false

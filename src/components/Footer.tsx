@@ -48,15 +48,15 @@ const Footer = () => {
             <div className="space-y-3 text-center">
               <div className="flex justify-center items-center space-x-3">
                 <MapPin className="h-4 w-4 text-accent" />
-                <span className="text-sm">Rua das Empresas, 1234 - São Paulo/SP</span>
+                <span className="text-sm">Rua Júlio de Castilhos, 849 - Faxinal do Soturno/RS</span>
               </div>
               <div className="flex justify-center items-center space-x-3">
                 <Phone className="h-4 w-4 text-accent" />
-                <span className="text-sm">(11) 3456-7890</span>
+                <span className="text-sm">(55) 3263-2363</span>
               </div>
               <div className="flex justify-center items-center space-x-3">
                 <Mail className="h-4 w-4 text-accent" />
-                <span className="text-sm">contato@contabilcorp.com.br</span>
+                <span className="text-sm">atendimento@gisassessoriacontabil.com.br</span>
               </div>
             </div>
           </div>
@@ -129,7 +129,7 @@ const Footer = () => {
 
           <div className="mt-6 pt-6 border-t border-primary-foreground/20 text-center">
             <p className="text-xs text-primary-foreground/60">
-              CNPJ: 12.345.678/0001-90 | Responsável Técnico: João Silva - CRC/SP 1SP234567
+              CNPJ: 21.897.803/0001-60 | Responsável Técnico: Gilberto Scolari - CRC/MT-009477/O
             </p>
           </div>
         </div>
