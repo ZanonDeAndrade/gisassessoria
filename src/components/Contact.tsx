@@ -6,23 +6,39 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, Phone, MessageSquare, Send, CheckCircle } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import emailjs from "emailjs-com";
 
 const Contact = () => {
   const { toast } = useToast();
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [service, setService] = useState("");
+  const formRef = useRef<HTMLFormElement>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
-    toast({
-      title: "Mensagem enviada com sucesso!",
-      description: "Retornaremos o contato em até 24 horas.",
-    });
-    
-    setTimeout(() => {
-      setIsSubmitted(false);
-    }, 3000);
+    if (!formRef.current) return;
+
+    const serviceID = "service_u7iji7z";
+    const templateID = "template_r5bgre9";
+    const publicKey = "GPj1Z7jOfmWy2L8gp";
+
+    emailjs.sendForm(serviceID, templateID, formRef.current, publicKey)
+      .then(() => {
+        setIsSubmitted(true);
+        toast({
+          title: "Mensagem enviada com sucesso!",
+          description: "Retornaremos o contato em até 24 horas.",
+        });
+        setTimeout(() => setIsSubmitted(false), 3000);
+      })
+      .catch((err) => {
+        toast({
+          title: "Erro ao enviar mensagem",
+          description: "Tente novamente mais tarde.",
+        });
+        console.error("Erro EmailJS:", err);
+      });
   };
 
   const contactMethods = [
@@ -31,27 +47,30 @@ const Contact = () => {
       title: "Telefone",
       description: "Fale diretamente conosco",
       value: "(55) 3263-2363",
-      action: "Entre em contato"
+      action: "Ligar",
+      link: "tel:+555532632363",
     },
     {
       icon: MessageSquare,
       title: "WhatsApp",
       description: "Mande mensagem",
-      value: "(55)9 9977-9482",
-      action: "WhatsApp"
+      value: "(55) 9 9977-9482",
+      action: "WhatsApp",
+      link: "https://wa.me/55999779482",
     },
     {
       icon: Mail,
       title: "E-mail",
       description: "Envie sua dúvida",
       value: "atendimento@gisassessoriacontabil.com.br",
-      action: "Enviar E-mail"
-    }
+      action: "Enviar E-mail",
+      link: "mailto:atendimento@gisassessoriacontabil.com.br",
+    },
   ];
 
   return (
     <section id="contact" className="py-20 bg-gray-100">
-      <div className="container mx-auto px-4 ">
+      <div className="container mx-auto px-4">
         <div className="text-center mb-16 text-muted-foreground">
           <Badge variant="outline" className="mb-4 text-muted-foreground">
             Entre em Contato
@@ -60,14 +79,18 @@ const Contact = () => {
             Pronto para <span className="text-primary">Começar?</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Entre em contato conosco e descubra como podemos ajudar sua empresa 
+            Entre em contato conosco e descubra como podemos ajudar sua empresa
             a crescer com soluções contábeis personalizadas.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8 mb-12 ">
+        {/* Cards de contato */}
+        <div className="grid lg:grid-cols-3 gap-8 mb-12">
           {contactMethods.map((method, index) => (
-            <Card key={index} className=" text-muted-foreground bg-gradient-card border-0 shadow-card hover:shadow-elegant transition-smooth group text-center">
+            <Card
+              key={index}
+              className="text-muted-foreground bg-gradient-card border-0 shadow-card hover:shadow-elegant transition-smooth group text-center"
+            >
               <CardHeader>
                 <div className="flex justify-center mb-4">
                   <div className="p-4 bg-primary/10 rounded-2xl group-hover:bg-primary/20 transition-smooth">
@@ -79,52 +102,58 @@ const Contact = () => {
               </CardHeader>
               <CardContent>
                 <p className="font-semibold text-lg mb-4">{method.value}</p>
-                <Button variant="outline" className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-smooth">
-                  {method.action}
+                <Button
+                  asChild
+                  variant="outline"
+                  className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-smooth"
+                >
+                  <a href={method.link} target="_blank" rel="noopener noreferrer">
+                    {method.action}
+                  </a>
                 </Button>
               </CardContent>
             </Card>
           ))}
         </div>
 
+        {/* Formulário + Benefícios */}
         <div className="grid lg:grid-cols-2 gap-12">
+          {/* Formulário */}
           <Card className="bg-gradient-card border-0 shadow-card">
             <CardHeader>
               <CardTitle className="text-2xl text-muted-foreground">Solicite uma Consultoria</CardTitle>
-              <p className="text-muted-foreground ">
-                Preencha o formulário e entraremos em contato.
-              </p>
+              <p className="text-muted-foreground">Preencha o formulário e entraremos em contato.</p>
             </CardHeader>
             <CardContent>
               {!isSubmitted ? (
-                <form onSubmit={handleSubmit} className="space-y-6 text-muted-foreground">
+                <form ref={formRef} onSubmit={handleSubmit} className="space-y-6 text-muted-foreground">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
                       <label className="text-sm font-medium mb-2 block">Nome Completo</label>
-                      <Input placeholder="Seu nome completo" required />
+                      <Input name="user_name" placeholder="Seu nome completo" required />
                     </div>
                     <div>
                       <label className="text-sm font-medium mb-2 block">E-mail</label>
-                      <Input type="email" placeholder="seu@email.com" required />
+                      <Input type="email" name="user_email" placeholder="seu@email.com" required />
                     </div>
                   </div>
-                  
+
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
                       <label className="text-sm font-medium mb-2 block">Telefone</label>
-                      <Input placeholder="(11) 99999-9999" required />
+                      <Input name="user_phone" placeholder="(11) 99999-9999" required />
                     </div>
                     <div>
                       <label className="text-sm font-medium mb-2 block">Empresa</label>
-                      <Input placeholder="Nome da sua empresa" />
+                      <Input name="user_company" placeholder="Nome da sua empresa" />
                     </div>
                   </div>
 
                   <div>
-                    <label className="text-sm font-medium mb-2 block ">Tipo de Serviço</label>
-                    <Select required>
+                    <label className="text-sm font-medium mb-2 block">Tipo de Serviço</label>
+                    <Select onValueChange={(value) => setService(value)} required>
                       <SelectTrigger>
-                        <SelectValue placeholder="Selecione o serviço de interesse " />
+                        <SelectValue placeholder="Selecione o serviço de interesse" />
                       </SelectTrigger>
                       <SelectContent className="text-muted-foreground">
                         <SelectItem value="contabilidade">Contabilidade Geral</SelectItem>
@@ -135,11 +164,13 @@ const Contact = () => {
                         <SelectItem value="outros">Outros</SelectItem>
                       </SelectContent>
                     </Select>
+                    <input type="hidden" name="service" value={service} />
                   </div>
 
                   <div>
                     <label className="text-sm font-medium mb-2 block">Mensagem</label>
-                    <Textarea 
+                    <Textarea
+                      name="message"
                       placeholder="Descreva suas necessidades ou dúvidas..."
                       className="min-h-[120px]"
                       required
@@ -162,10 +193,7 @@ const Contact = () => {
                   <p className="text-muted-foreground mb-6">
                     Recebemos sua solicitação e retornaremos o contato em breve.
                   </p>
-                  <Button 
-                    variant="outline" 
-                    onClick={() => setIsSubmitted(false)}
-                  >
+                  <Button variant="outline" onClick={() => setIsSubmitted(false)}>
                     Enviar Nova Mensagem
                   </Button>
                 </div>
@@ -173,6 +201,7 @@ const Contact = () => {
             </CardContent>
           </Card>
 
+          {/* Benefícios da empresa */}
           <div className="space-y-8">
             <Card className="bg-text-primary-foreground border-0 shadow-elegant">
               <CardContent className="p-8 bg-gradient-card text-muted-foreground">
