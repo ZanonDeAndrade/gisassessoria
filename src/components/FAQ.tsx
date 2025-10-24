@@ -40,7 +40,7 @@ const FAQ = () => {
 
   return (
     <section className="py-20 text-muted-foreground">
-      <div className="container mx-auto px-4">
+      <div className="container">
         <div className="text-center mb-16">
           <Badge variant="outline" className="mb-4 text-muted-foreground">
             Perguntas Frequentes

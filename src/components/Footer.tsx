@@ -38,10 +38,10 @@ const Footer = () => {
 
   return (
     <footer className="bg-gray-500 text-primary-foreground">
-      <div className="container mx-auto px-4 py-16 text-center">
-        <div className="grid lg:grid-cols-3 gap-8 justify-center">
+      <div className="container py-16 text-center">
+        <div className="grid gap-10 justify-center md:grid-cols-2 lg:grid-cols-3">
           {/* Company Info */}
-          <div className="space-y-6 flex flex-col items-center">
+          <div className="flex flex-col items-center space-y-6">
             <div className="flex items-center justify-center space-x-2">
               <img src={logoGis} alt="Logo GIS" className="w-40 h-20" />
             </div>
@@ -97,8 +97,8 @@ const Footer = () => {
         </div>
 
         {/* Bottom section */}
-        <div className="border-t border-primary-foreground/20 mt-12 pt-8">
-          <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-6">
+        <div className="mt-12 border-t border-primary-foreground/20 pt-8">
+          <div className="flex flex-col items-center justify-center space-y-4 text-center md:flex-row md:space-y-0 md:space-x-6">
             <div className="text-sm text-primary-foreground/80">
               © {currentYear} Gis Assessoria Contábil. Todos os direitos reservados. || Desenvolvido por{" "}
               <a
