@@ -1,9 +1,83 @@
+import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { CheckCircle, Target, Eye, Heart } from "lucide-react";
+import { CheckCircle, Target, Eye, Heart, ChevronLeft, ChevronRight } from "lucide-react";
 import teamPhoto from "@/assets/team-photo.jpeg";
+import Gilberto from "@/assets/Gilberto.jpeg";
+import Claudio from "@/assets/Claudio.jpeg";
+import Igor from "@/assets/Igor.jpeg";
+import Isabel from "@/assets/Isabel.jpeg";
+import Mauren from "@/assets/Mauren.jpeg";
+import Rita from "@/assets/Rita.jpeg";
+import Roger from "@/assets/Roger.jpeg";
+import Tainara from "@/assets/Tainara.jpeg";
+import William from "@/assets/William.jpeg";
+
+
+const TEAM_MEMBERS = [
+  {
+    photo: teamPhoto
+  },
+  {
+    name: "Gilberto Scolari",
+    role: "Contador e Sócio Propietário",
+    photo: Gilberto
+  },
+  {
+    name: "Claudio Heesch",
+    role: "Resposável pelas empresas do Lucro Real e Presumido",
+    photo: Claudio
+  },
+  {
+    name: "Isabel",
+    role: "Departamento Pessoal",
+    photo: Isabel
+  },
+  {
+    name: "Rita",
+    role: "Departamento Pessoal",
+    photo: Rita
+  },
+  {
+    name: "William",
+    role: "Departamento Fiscal",
+    photo: William
+  },
+  {
+    name: "Roger",
+    role: "Departamento Contábil",
+    photo: Roger
+  },
+  {
+    name: "Mauren",
+    role: "Departamento Contábil",
+    photo: Mauren
+  },
+  {
+    name: "Igor",
+    role: "Recepção e Atendimento ao cliente",
+    photo: Igor
+  },
+  {
+    name: "Tainara",
+    role: "Recepção e Atendimento ao cliente",
+    photo: Tainara
+  }
+
+];
 
 const About = () => {
+  const [activeMember, setActiveMember] = useState(0);
+  const totalMembers = TEAM_MEMBERS.length;
+
+  const showNext = () => {
+    setActiveMember((prev) => (prev + 1) % totalMembers);
+  };
+
+  const showPrevious = () => {
+    setActiveMember((prev) => (prev - 1 + totalMembers) % totalMembers);
+  };
+
   const values = [
     {
       icon: Target,
@@ -80,12 +154,54 @@ const About = () => {
           <div className="order-1 lg:order-2">
             <div className="relative">
               <div className="relative overflow-hidden rounded-3xl shadow-elegant">
-                <img
-                  src={teamPhoto}
-                  alt="Equipe ContabilCorp"
-                  className="h-72 w-full object-cover sm:h-[420px] lg:h-[500px]"
-                />
-                <div className="absolute inset-0 bg-gradient-primary opacity-10"></div>
+                <div
+                  className="flex transition-transform duration-500 ease-in-out"
+                  style={{ transform: `translateX(-${activeMember * 100}%)` }}
+                >
+                  {TEAM_MEMBERS.map((member) => (
+                    <div key={member.name} className="relative w-full flex-shrink-0">
+                      <img
+                        src={member.photo}
+                        alt={`Foto de ${member.name}`}
+                        className="h-72 w-full object-cover sm:h-[420px] lg:h-[500px]"
+                      />
+                      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-gray-900/90 via-gray-900/40 to-transparent px-6 pb-6 pt-14">
+                        <h3 className="text-xl font-semibold text-white">{member.name}</h3>
+                        <p className="text-sm text-white/80">{member.role}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <button
+                  type="button"
+                  onClick={showPrevious}
+                  aria-label="Ver colaborador anterior"
+                  className="absolute left-4 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 text-gray-800 shadow-lg backdrop-blur transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-primary"
+                >
+                  <ChevronLeft className="h-5 w-5" />
+                </button>
+
+                <button
+                  type="button"
+                  onClick={showNext}
+                  aria-label="Ver próximo colaborador"
+                  className="absolute right-4 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 text-gray-800 shadow-lg backdrop-blur transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-primary"
+                >
+                  <ChevronRight className="h-5 w-5" />
+                </button>
+
+                <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2">
+                  {TEAM_MEMBERS.map((_, index) => (
+                    <button
+                      key={index}
+                      type="button"
+                      onClick={() => setActiveMember(index)}
+                      aria-label={`Ver ${TEAM_MEMBERS[index].name}`}
+                      className={`h-2.5 w-2.5 rounded-full transition ${activeMember === index ? "bg-primary" : "bg-white/40 hover:bg-white/70"}`}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
           </div>
