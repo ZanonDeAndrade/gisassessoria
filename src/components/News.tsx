@@ -45,7 +45,7 @@ const News = () => {
 
   return (
     <section id="news" className="py-20 bg-gray-100">
-      <div className="container mx-auto px-4 text-muted-foreground">
+      <div className="container text-muted-foreground">
         <div className="text-center mb-16">
           <Badge variant="outline" className="mb-4 text-muted-foreground">
             Notícias & Atualizações
@@ -59,9 +59,9 @@ const News = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 mb-12 ">
+        <div className="mb-12 grid gap-8 sm:grid-cols-2">
           {news.map((item, index) => (
-            <Card key={index} className="bg-gradient-card border-0 shadow-card hover:shadow-elegant transition-smooth group">
+            <Card key={index} className="group h-full border-0 bg-gradient-card shadow-card transition-smooth hover:shadow-elegant">
               <CardHeader className="pb-4">
                 <div className="flex items-start justify-between mb-2">
                   <Badge 

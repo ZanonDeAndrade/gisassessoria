@@ -5,7 +5,7 @@ import { MapPin, Phone, Mail, Clock, Package } from "lucide-react";
 const Location = () => {
   return (
     <section id="location" className="py-20">
-      <div className="container mx-auto px-4">
+      <div className="container">
         <div className="text-center mb-16">
           <Badge variant="outline" className="mb-4 text-muted-foreground">
             Localização
@@ -18,7 +18,7 @@ const Location = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid gap-12 lg:grid-cols-2">
           {/* Coluna esquerda */}
           <div className="space-y-8">
             <Card className="bg-gradient-card border-0 shadow-card">
@@ -46,9 +46,9 @@ const Location = () => {
             </Card>
 
             {/* Telefones + E-mails */}
-            <div className="grid md:grid-cols-3 gap-7">
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {/* Telefones ocupa 1 coluna */}
-              <Card className="bg-gradient-card border-0 shadow-card md:col-span-1">
+              <Card className="bg-gradient-card border-0 shadow-card">
                 <CardHeader>
                   <CardTitle className="flex items-center space-x-3 text-muted-foreground">
                     <Phone className="h-5 w-5 text-primary " />
@@ -68,7 +68,7 @@ const Location = () => {
               </Card>
 
               {/* E-mails ocupa 2 colunas */}
-              <Card className="bg-gradient-card border-0 shadow-card md:col-span-2">
+              <Card className="bg-gradient-card border-0 shadow-card sm:col-span-2 lg:col-span-2">
                 <CardHeader>
                   <CardTitle className="flex items-center space-x-3 text-muted-foreground">
                     <Mail className="h-5 w-5 text-primary" />
@@ -116,7 +116,7 @@ const Location = () => {
           {/* Coluna direita - Street View da Fachada */}
           <div className="space-y-6 lg:pl-12">
             <div className="bg-gradient-card rounded-2xl p-4 shadow-card">
-              <div className="rounded-xl overflow-hidden h-[450px]">
+              <div className="h-64 overflow-hidden rounded-xl sm:h-80 lg:h-[450px]">
                 <iframe
                   title="Fachada GIS Assessoria Contábil"
                   src="https://www.google.com/maps/embed?pb=!4v1725504799183!6m8!1m7!1sCAoSLEFGMVFpcFBueW83dGtsSDRVcDg1ckxNVkxheS1fM0FoYnF1NUh6WHdjdHkt!2m2!1d-29.5786997!2d-53.4447395!3f159.65!4f0!5f0.7820865974627469"

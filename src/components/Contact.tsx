@@ -70,7 +70,7 @@ const Contact = () => {
 
   return (
     <section id="contact" className="py-20 bg-gray-100">
-      <div className="container mx-auto px-4">
+      <div className="container">
         <div className="text-center mb-16 text-muted-foreground">
           <Badge variant="outline" className="mb-4 text-muted-foreground">
             Entre em Contato
@@ -85,27 +85,31 @@ const Contact = () => {
         </div>
 
         {/* Cards de contato */}
-        <div className="grid lg:grid-cols-3 gap-8 mb-12">
+        <div className="mb-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {contactMethods.map((method, index) => (
             <Card
               key={index}
-              className="text-muted-foreground bg-gradient-card border-0 shadow-card hover:shadow-elegant transition-smooth group text-center"
+              className="group h-full overflow-hidden border-0 bg-gradient-card text-center text-muted-foreground shadow-card transition-smooth hover:shadow-elegant"
             >
-              <CardHeader>
-                <div className="flex justify-center mb-4">
-                  <div className="p-4 bg-primary/10 rounded-2xl group-hover:bg-primary/20 transition-smooth">
+              <CardHeader className="space-y-3">
+                <div className="flex justify-center">
+                  <div className="rounded-2xl bg-primary/10 p-4 transition-smooth group-hover:bg-primary/20">
                     <method.icon className="h-8 w-8 text-primary" />
                   </div>
                 </div>
                 <CardTitle>{method.title}</CardTitle>
-                <p className="text-muted-foreground">{method.description}</p>
+                <p className="text-sm text-muted-foreground/80 text-balance">
+                  {method.description}
+                </p>
               </CardHeader>
-              <CardContent>
-                <p className="font-semibold text-lg mb-4">{method.value}</p>
+              <CardContent className="flex flex-col items-center gap-4">
+                <p className="w-full text-balance break-words text-lg font-semibold">
+                  {method.value}
+                </p>
                 <Button
                   asChild
                   variant="outline"
-                  className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-smooth"
+                  className="w-full text-sm transition-smooth group-hover:bg-primary group-hover:text-primary-foreground"
                 >
                   <a href={method.link} target="_blank" rel="noopener noreferrer">
                     {method.action}
@@ -117,7 +121,7 @@ const Contact = () => {
         </div>
 
         {/* Formulário + Benefícios */}
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           {/* Formulário */}
           <Card className="bg-gradient-card border-0 shadow-card">
             <CardHeader>
@@ -127,7 +131,7 @@ const Contact = () => {
             <CardContent>
               {!isSubmitted ? (
                 <form ref={formRef} onSubmit={handleSubmit} className="space-y-6 text-muted-foreground">
-                  <div className="grid md:grid-cols-2 gap-4">
+                  <div className="grid gap-4 md:grid-cols-2">
                     <div>
                       <label className="text-sm font-medium mb-2 block">Nome Completo</label>
                       <Input name="user_name" placeholder="Seu nome completo" required />
@@ -152,7 +156,7 @@ const Contact = () => {
                   <div>
                     <label className="text-sm font-medium mb-2 block">Tipo de Serviço</label>
                     <Select onValueChange={(value) => setService(value)} required>
-                      <SelectTrigger>
+                      <SelectTrigger className="w-full">
                         <SelectValue placeholder="Selecione o serviço de interesse" />
                       </SelectTrigger>
                       <SelectContent className="text-muted-foreground">
@@ -203,8 +207,8 @@ const Contact = () => {
 
           {/* Benefícios da empresa */}
           <div className="space-y-8">
-            <Card className="bg-text-primary-foreground border-0 shadow-elegant">
-              <CardContent className="p-8 bg-gradient-card text-muted-foreground">
+            <Card className="border-0 shadow-elegant">
+              <CardContent className="rounded-2xl bg-gradient-card p-8 text-muted-foreground">
                 <h3 className="text-2xl font-bold mb-4">Por que escolher a Gis Assessoria Contábil?</h3>
                 <ul className="space-y-3">
                   <li className="flex items-center space-x-3">
