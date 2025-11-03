@@ -68,7 +68,7 @@ const Services = () => {
 
   return (
     <section id="services" className="py-20 bg-gray-100">
-      <div className="container mx-auto px-4">
+      <div className="container">
         <div className="text-center mb-16">
           <Badge variant="outline" className="mb-5 text-muted-foreground ">
             Nossos Serviços
@@ -83,9 +83,9 @@ const Services = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <div className="mb-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service, index) => (
-            <Card key={index} className="text-muted-foreground relative bg-gradient-card border-0 shadow-card hover:shadow-elegant transition-smooth group">
+            <Card key={index} className="group relative h-full border-0 bg-gradient-card text-muted-foreground shadow-card transition-smooth hover:shadow-elegant">
               {service.highlight && (
                 <Badge 
                   variant="default" 
@@ -107,8 +107,8 @@ const Services = () => {
                   {service.description}
                 </CardDescription>
               </CardHeader>
-              <CardContent>
-                <ul className="space-y-2 mb-6">
+              <CardContent className="flex flex-col">
+                <ul className="mb-6 space-y-2">
                   {service.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-center space-x-2">
                       <div className="w-1.5 h-1.5 bg-accent rounded-full flex-shrink-0"></div>
@@ -118,7 +118,7 @@ const Services = () => {
                 </ul>
                 <Button
                   variant="outline"
-                  className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-smooth"
+                  className="mt-auto w-full transition-smooth group-hover:bg-primary group-hover:text-primary-foreground"
                   onClick={scrollToContact}
                 >
                   Solicitar Orçamento
@@ -128,8 +128,8 @@ const Services = () => {
           ))}
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 bg-primary/5 rounded-2xl p-8">
-          <div className="text-center">
+        <div className="grid gap-8 rounded-2xl bg-primary/5 p-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="text-center space-y-3">
             <div className="flex justify-center mb-4">
               <PieChart className="h-12 w-12 text-primary" />
             </div>
@@ -138,7 +138,7 @@ const Services = () => {
               Relatórios financeiros e gerenciais adaptados às necessidades do seu negócio.
             </p>
           </div>
-          <div className="text-center">
+          <div className="text-center space-y-3">
             <div className="flex justify-center mb-4">
               <Clock className="h-12 w-12 text-primary" />
             </div>
@@ -147,7 +147,7 @@ const Services = () => {
               Respostas rápidas e soluções eficientes para todas as suas demandas contábeis.
             </p>
           </div>
-          <div className="text-center">
+          <div className="text-center space-y-3">
             <div className="flex justify-center mb-4">
               <Award className="h-12 w-12 text-primary" />
             </div>
