@@ -77,13 +77,13 @@ const Location = () => {
                 </CardHeader>
                 <CardContent className="space-y-3 text-left text-muted-foreground">
                   <div>
-                    <p className="font-medium break-words">
+                    <p className="break-words text-sm font-medium sm:text-base">
                       atendimento@gisassessoriacontabil.com.br
                     </p>
                     <p className="text-sm text-muted-foreground">Atendimento geral</p>
                   </div>
                   <div>
-                    <p className="font-medium break-words">
+                    <p className="break-words text-sm font-medium sm:text-base">
                       gilberto.scolari@gisassessoriacontabil.com.br
                     </p>
                     <p className="text-sm text-muted-foreground">Contador</p>
