@@ -1,48 +1,73 @@
-name: Deploy React Vite para Locaweb (FTP)
+# ============================================
+# 🚀 Deploy Automático: React + Vite → Locaweb (FTPS)
+# ============================================
+# Autor: @ZanonDeAndrade
+# Descrição:
+# Este workflow faz build do projeto React/Vite e envia automaticamente
+# os arquivos da pasta dist/ para a hospedagem Locaweb via FTPS (porta 21).
+#
+# ✅ Suporta conexão segura (SSL/TLS)
+# ✅ Faz verificação do build antes do deploy
+# ✅ Gera logs claros em caso de erro
+# ============================================
+
+name: Deploy React Vite para Locaweb (FTPS)
 
 on:
   push:
     branches:
-      - main
+      - main  # dispara o deploy apenas em pushs na branch main
 
 jobs:
   build-and-deploy:
     name: Build & Deploy
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
 
     steps:
+      # 1️⃣ Checkout do repositório
       - name: Checkout do código
         uses: actions/checkout@v4
 
+      # 2️⃣ Configuração do Node.js
       - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'npm'
 
+      # 3️⃣ Instalar dependências
       - name: Instalar dependências
         run: npm ci
 
+      # 4️⃣ Gerar build do Vite
       - name: Gerar build do Vite
         run: npm run build
 
+      # 5️⃣ Verificar se o build foi gerado corretamente
       - name: Verificar build
         run: |
+          echo "🧩 Verificando pasta dist..."
           if [ ! -d "dist" ]; then
-            echo "❌ ERRO: pasta dist/ não encontrada!"
+            echo "❌ ERRO: pasta dist/ não encontrada. O build falhou."
             exit 1
           fi
-          echo "✅ Pasta dist/ encontrada, prosseguindo com o deploy..."
+          echo "✅ Build gerado com sucesso. Iniciando deploy..."
 
-      - name: Deploy via FTP para Locaweb
+      # 6️⃣ Deploy via FTPS (FTP com SSL)
+      - name: Deploy via FTPS para Locaweb
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.HOST }}
-          username: ${{ secrets.USER }}
-          password: ${{ secrets.PASS }}
-          local-dir: ./dist/
-          server-dir: /home/gisassessoricon1/public_html/
-          protocol: ftp
-          port: 21
-          timeout: 60000
+          server: ${{ secrets.HOST }}          # IP do servidor ou domínio FTP
+          username: ${{ secrets.USER }}        # Usuário de FTP
+          password: ${{ secrets.PASS }}        # Senha de FTP
+          local-dir: ./dist/                   # Pasta gerada pelo Vite
+          server-dir: /home/gisassessoricon1/public_html/  # Diretório remoto
+          protocol: ftps                       # ⚡ FTPS = FTP com SSL
+          port: 21                             # Porta padrão da Locaweb
+          timeout: 60000                       # Timeout em ms
+          log-level: verbose                   # Logs detalhados para debug
+          exclude: |
+            **/.git*
+            **/.github*
+            **/node_modules/**
