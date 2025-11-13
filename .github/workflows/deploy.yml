@@ -41,4 +41,3 @@ jobs:
           user: ${{ secrets.USER }}      # gisassessoricon1
           password: ${{ secrets.PASS }}  # senha FTP (no painel da Locaweb)
           localDir: "dist"               # pasta gerada pelo build do Vite
-          options: "--passive --parallel=3" # modo passivo (obrigatório na Locaweb)
