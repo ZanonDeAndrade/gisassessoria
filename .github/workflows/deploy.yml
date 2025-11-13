@@ -1,3 +1,7 @@
+# ============================================
+# 🚀 Deploy Automático: React + Vite → Locaweb (SFTP)
+# ============================================
+
 name: Deploy React Vite para Locaweb (SFTP)
 
 on:
@@ -9,23 +13,38 @@ jobs:
   build-and-deploy:
     name: Build & Deploy
     runs-on: ubuntu-latest
+    timeout-minutes: 10 # evita jobs travados
 
     steps:
+      # 1️⃣ Checkout do código
       - name: Checkout do código
         uses: actions/checkout@v4
 
+      # 2️⃣ Configurar Node.js com cache do npm
       - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'npm'
 
+      # 3️⃣ Instalar dependências
       - name: Instalar dependências
         run: npm ci
 
+      # 4️⃣ Gerar build do Vite
       - name: Gerar build do Vite
         run: npm run build
 
+      # 5️⃣ Verificar se a pasta dist/ foi criada
+      - name: Verificar build
+        run: |
+          if [ ! -d "dist" ]; then
+            echo "❌ ERRO: pasta dist/ não encontrada!"
+            exit 1
+          fi
+          echo "✅ Pasta dist/ encontrada, prosseguindo com o deploy..."
+
+      # 6️⃣ Deploy via SFTP
       - name: Deploy via SFTP para Locaweb
         uses: appleboy/scp-action@v0.1.7
         with:
@@ -36,3 +55,4 @@ jobs:
           source: "dist/*"
           target: "/home/gisassessoricon1/public_html/"
           overwrite: true
+          debug: true
