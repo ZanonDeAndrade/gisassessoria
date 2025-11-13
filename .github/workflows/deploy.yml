@@ -3,9 +3,8 @@
 # ============================================
 # Autor: @ZanonDeAndrade
 # Descrição:
-# - Faz build do projeto React/Vite
-# - Envia automaticamente a pasta dist/ para a hospedagem Locaweb via FTP
-# - FTP é o único protocolo suportado na hospedagem compartilhada da Locaweb
+# Faz o build do projeto e envia automaticamente os arquivos
+# para a hospedagem Locaweb usando FTP (porta 21).
 # ============================================
 
 name: Deploy React Vite para Locaweb
@@ -13,20 +12,19 @@ name: Deploy React Vite para Locaweb
 on:
   push:
     branches:
-      - main  # deploy automático somente na branch main
+      - main
 
 jobs:
   build-and-deploy:
-    name: Build & Deploy
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
     steps:
-      # 1️⃣ Checkout do repositório
+      # 1️⃣ Checkout
       - name: Checkout do código
         uses: actions/checkout@v4
 
-      # 2️⃣ Configuração do Node.js
+      # 2️⃣ Node.js
       - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
@@ -37,31 +35,30 @@ jobs:
       - name: Instalar dependências
         run: npm ci
 
-      # 4️⃣ Build do Vite
+      # 4️⃣ Build Vite
       - name: Gerar build do Vite
         run: npm run build
 
-      # 5️⃣ Verificar se o build existe
-      - name: Verificar build
+      # 5️⃣ Verificar build
+      - name: Verificar pasta dist
         run: |
-          echo "🧩 Verificando pasta dist..."
           if [ ! -d "dist" ]; then
-            echo "❌ ERRO: pasta dist/ não encontrada. O build falhou."
+            echo "❌ ERRO: pasta dist/ não encontrada."
             exit 1
           fi
-          echo "✅ Build encontrado. Iniciando deploy..."
+          echo "✅ Build encontrado."
 
-      # 6️⃣ Deploy via FTP (compatível com Locaweb)
+      # 6️⃣ Deploy via FTP para Locaweb
       - name: Deploy via FTP para Locaweb
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.HOST }}          # ex: ftp.seudominio.com
-          username: ${{ secrets.USER }}        # usuário do FTP
-          password: ${{ secrets.PASS }}        # senha do FTP
-          protocol: ftp                        # ⚠️ Locaweb só aceita FTP puro
-          port: 21                             # porta padrão da Locaweb
-          local-dir: ./dist/                   # pasta gerada pelo Vite
-          server-dir: /home/gisassessoricon1/public_html/
+          server: ${{ secrets.HOST }}                 # ftp.gisassessoriacontabil.com.br
+          username: ${{ secrets.USER }}               # gisassessoriacon1
+          password: ${{ secrets.PASS }}               # senha do FTP
+          protocol: ftp
+          port: 21
+          local-dir: ./dist/                          # pasta do build do Vite
+          server-dir: /home/gisassessoriacon1/        # raiz pública da Locaweb
           timeout: 60000
           log-level: verbose
           exclude: |
