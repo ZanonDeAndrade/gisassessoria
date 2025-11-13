@@ -1,11 +1,4 @@
-# ============================================
-# 🚀 Deploy Automático: React + Vite → Locaweb
-# ============================================
-# Autor: ZanonDeAndrade
-# Build + Deploy automático via GitHub Actions
-# ============================================
-
-name: Deploy React Vite para Locaweb
+name: Deploy React Vite para Locaweb (SFTP)
 
 on:
   push:
@@ -18,34 +11,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Checkout do código
       - name: Checkout do código
         uses: actions/checkout@v4
 
-      # 2️⃣ Configura Node.js (necessário para npm)
       - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'npm'
 
-      # 3️⃣ Instalar dependências
       - name: Instalar dependências
         run: npm ci
 
-      # 4️⃣ Gerar build de produção do Vite
       - name: Gerar build do Vite
         run: npm run build
 
-      # 5️⃣ Deploy via FTP (SamKirkland/FTP-Deploy-Action)
-      - name: Deploy via FTP para Locaweb
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      - name: Deploy via SFTP para Locaweb
+        uses: appleboy/scp-action@v0.1.7
         with:
-          server: ${{ secrets.HOST }}        # ftp.gisassessoriacontabil.com.br
-          username: ${{ secrets.USER }}      # gisassessoricon1
-          password: ${{ secrets.PASS }}      # senha FTP
-          local-dir: ./dist/                  # pasta de saída do Vite
-          server-dir: /home/gisassessoricon1/public_html/  # pasta pública
-          protocol: ftp
-          port: 21
-          timeout: 60000
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          password: ${{ secrets.PASS }}
+          port: 22
+          source: "dist/*"
+          target: "/home/gisassessoricon1/public_html/"
+          overwrite: true
