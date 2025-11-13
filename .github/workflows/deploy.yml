@@ -46,5 +46,3 @@ jobs:
           protocol: ftp
           port: 21
           timeout: 60000
-          # opcional: para limpar arquivos antigos
-          # dangerous-clean-slate: true
