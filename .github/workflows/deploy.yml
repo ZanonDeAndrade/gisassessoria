@@ -2,10 +2,7 @@
 # 🚀 Deploy Automático: React + Vite → Locaweb
 # ============================================
 # Autor: ZanonDeAndrade
-# Descrição:
-# Este workflow realiza build e deploy automático do site React/Vite
-# para a hospedagem Locaweb via FTP.
-# Basta fazer um `git push origin main` e o deploy será executado.
+# Build + Deploy automático via GitHub Actions
 # ============================================
 
 name: Deploy React Vite para Locaweb
@@ -13,7 +10,7 @@ name: Deploy React Vite para Locaweb
 on:
   push:
     branches:
-      - main  # dispara o deploy apenas quando houver push na branch main
+      - main
 
 jobs:
   build-and-deploy:
@@ -21,23 +18,34 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Faz checkout do código do repositório
+      # 1️⃣ Checkout do código
       - name: Checkout do código
         uses: actions/checkout@v4
 
-      # 2️⃣ Instala dependências (usa cache se disponível)
+      # 2️⃣ Configura Node.js (necessário para npm)
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      # 3️⃣ Instalar dependências
       - name: Instalar dependências
         run: npm ci
 
-      # 3️⃣ Gera o build do Vite
+      # 4️⃣ Gerar build de produção do Vite
       - name: Gerar build do Vite
         run: npm run build
 
-      # 4️⃣ Faz o deploy via FTP para a Locaweb
+      # 5️⃣ Deploy via FTP (SamKirkland/FTP-Deploy-Action)
       - name: Deploy via FTP para Locaweb
-        uses: locaweb/ftp-deploy@1.0.0
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          host: ${{ secrets.HOST }}      # ftp.gisassessoriacontabil.com.br
-          user: ${{ secrets.USER }}      # gisassessoricon1
-          password: ${{ secrets.PASS }}  # senha FTP (no painel da Locaweb)
-          localDir: "dist"               # pasta gerada pelo build do Vite
+          server: ${{ secrets.HOST }}        # ftp.gisassessoriacontabil.com.br
+          username: ${{ secrets.USER }}      # gisassessoricon1
+          password: ${{ secrets.PASS }}      # senha FTP
+          local-dir: ./dist                  # pasta de saída do Vite
+          server-dir: /home/gisassessoricon1/public_html/  # pasta pública
+          protocol: ftp
+          port: 21
+          timeout: 60000
