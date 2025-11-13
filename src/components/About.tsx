@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, Target, Eye, Heart, ChevronLeft, ChevronRight } from "lucide-react";
-import teamPhoto from "@/assets/team-photo.jpeg";
 import Gilberto from "@/assets/Gilberto.jpeg";
 import Claudio from "@/assets/Claudio.jpeg";
 import Igor from "@/assets/Igor.jpeg";
@@ -12,12 +11,10 @@ import Rita from "@/assets/Rita.jpeg";
 import Roger from "@/assets/Roger.jpeg";
 import Tainara from "@/assets/Tainara.jpeg";
 import William from "@/assets/William.jpeg";
-
+import { AspectRatio } from "@/components/ui/aspect-ratio";
+import TeamVideo from "@/assets/Video1.mp4";
 
 const TEAM_MEMBERS = [
-  {
-    photo: teamPhoto
-  },
   {
     name: "Gilberto Scolari",
     role: "Contador e Sócio Propietário",
@@ -205,6 +202,19 @@ const About = () => {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Vídeo institucional após as fotos */}
+        <div className="mt-12">
+          <AspectRatio ratio={16 / 9}>
+            <video
+              src={TeamVideo}
+              controls
+              preload="metadata"
+              playsInline
+              className="h-full w-full rounded-2xl object-cover shadow-elegant"
+            />
+          </AspectRatio>
         </div>
 
         <div className="mt-16 rounded-2xl bg-gradient-card p-8 shadow-card md:mt-20">

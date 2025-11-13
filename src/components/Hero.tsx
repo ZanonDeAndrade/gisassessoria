@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle } from "lucide-react";
-import heroImage from "@/assets/hero-accounting.jpg";
+import heroImage from "@/assets/team-photo.jpeg";
 
 const Hero = () => {
   const scrollToContact = () => {
@@ -23,10 +23,10 @@ const Hero = () => {
       className="relative flex min-h-[78vh] items-center overflow-hidden pt-24 pb-8 sm:min-h-[calc(100vh-5rem)] sm:pb-12 md:pb-16"
     >
       <div className="container">
-        <div className="grid items-center gap-14 lg:grid-cols-[1.1fr_0.9fr]">
+        <div className="grid items-center gap-14">
           <div className="space-y-8 text-left">
-            <div className="space-y-4">
-              <h1 className="text-4xl font-bold leading-tight md:text-5xl lg:text-6xl">
+            <div className="space-y-6">
+              <h1 className="text-4xl font-bold leading-tight md:text-5x2 lg:text-6xl">
                 <span className="text-primary">Soluções Contábeis</span>
                 <br />
                 <span className="text-foreground">Completas para</span>
@@ -35,6 +35,16 @@ const Hero = () => {
                   Seu Negócio
                 </span>
               </h1>
+
+              <div className="relative overflow-hidden rounded-3xl shadow-elegant">
+                <img
+                  src={heroImage}
+                  alt="Nossa equipe — Gis Assessoria"
+                  className="h-64 w-full object-cover sm:h-80 lg:h-[420px]"
+                />
+                <div className="absolute inset-0 bg-black/20" />
+              </div>
+
               <p className="max-w-xl text-lg text-muted-foreground md:text-xl">
                 Mais de 15 anos oferecendo serviços contábeis de excelência. Cuidamos da
                 sua contabilidade para você focar no que realmente importa.
@@ -86,28 +96,6 @@ const Hero = () => {
               </div>
             </div>
           </div>
-
-          <div className="relative hidden sm:block">
-            <div className="relative overflow-hidden rounded-3xl shadow-elegant">
-              <img
-                src={heroImage}
-                alt="Escritório de contabilidade moderno"
-                className="h-72 w-full object-cover sm:h-96 lg:h-[520px]"
-              />
-              <div className="absolute inset-0 bg-gradient-hero opacity-20" />
-            </div>
-
-            <div className="absolute -bottom-6 right-4 hidden rounded-2xl bg-background/95 p-5 shadow-card sm:flex lg:-right-10 lg:bottom-6">
-              <div>
-                <p className="text-xs uppercase tracking-[0.22em] text-muted-foreground">
-                  Consultoria dedicada
-                </p>
-                <p className="text-lg font-semibold text-foreground">
-                  Gestão contábil completa
-                </p>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -115,3 +103,4 @@ const Hero = () => {
 };
 
 export default Hero;
+
