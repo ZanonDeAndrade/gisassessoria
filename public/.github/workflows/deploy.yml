@@ -1,0 +1,44 @@
+# ============================================
+# 🚀 Deploy Automático: React + Vite → Locaweb
+# ============================================
+# Autor: ZanonDeAndrade
+# Descrição:
+# Este workflow realiza build e deploy automático do site React/Vite
+# para a hospedagem Locaweb via FTP.
+# Basta fazer um `git push origin main` e o deploy será executado.
+# ============================================
+
+name: Deploy React Vite para Locaweb
+
+on:
+  push:
+    branches:
+      - main  # dispara o deploy apenas quando houver push na branch main
+
+jobs:
+  build-and-deploy:
+    name: Build & Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ Faz checkout do código do repositório
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      # 2️⃣ Instala dependências (usa cache se disponível)
+      - name: Instalar dependências
+        run: npm ci
+
+      # 3️⃣ Gera o build do Vite
+      - name: Gerar build do Vite
+        run: npm run build
+
+      # 4️⃣ Faz o deploy via FTP para a Locaweb
+      - name: Deploy via FTP para Locaweb
+        uses: locaweb/ftp-deploy@1.0.0
+        with:
+          host: ${{ secrets.HOST }}      # ftp.gisassessoriacontabil.com.br
+          user: ${{ secrets.USER }}      # gisassessoricon1
+          password: ${{ secrets.PASS }}  # senha FTP (no painel da Locaweb)
+          localDir: "dist"               # pasta gerada pelo build do Vite
+          options: "--passive --parallel=3" # modo passivo (obrigatório na Locaweb)
