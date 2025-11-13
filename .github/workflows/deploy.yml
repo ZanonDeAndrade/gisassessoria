@@ -44,7 +44,7 @@ jobs:
           server: ${{ secrets.HOST }}        # ftp.gisassessoriacontabil.com.br
           username: ${{ secrets.USER }}      # gisassessoricon1
           password: ${{ secrets.PASS }}      # senha FTP
-          local-dir: ./dist                  # pasta de saída do Vite
+          local-dir: ./dist/                  # pasta de saída do Vite
           server-dir: /home/gisassessoricon1/public_html/  # pasta pública
           protocol: ftp
           port: 21
