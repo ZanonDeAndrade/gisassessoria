@@ -6,7 +6,7 @@
 
 ## How can I edit this code?
 
-There are several ways off editing yur application.
+There are several ways off editing your application.
 
 **Use Lovable**
 
