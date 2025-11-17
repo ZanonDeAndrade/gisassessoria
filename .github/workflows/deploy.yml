@@ -1,12 +1,6 @@
 # ============================================
 # 🚀 Deploy Automático: React + Vite → Locaweb (FTP)
 # ============================================
-# Autor: @ZanonDeAndrade
-# Descrição:
-# Faz o build do projeto e envia automaticamente os arquivos
-# para a hospedagem Locaweb usando FTP (porta 21).
-# ============================================
-
 name: Deploy React Vite para Locaweb
 
 on:
@@ -20,47 +14,48 @@ jobs:
     timeout-minutes: 15
 
     steps:
-      # 1️⃣ Checkout
       - name: Checkout do código
         uses: actions/checkout@v4
 
-      # 2️⃣ Node.js
       - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'npm'
 
-      # 3️⃣ Instalar dependências
       - name: Instalar dependências
         run: npm ci
 
-      # 4️⃣ Build Vite
       - name: Gerar build do Vite
         run: npm run build
 
-      # 5️⃣ Verificar build
       - name: Verificar pasta dist
         run: |
           if [ ! -d "dist" ]; then
             echo "❌ ERRO: pasta dist/ não encontrada."
             exit 1
           fi
-          echo "✅ Build encontrado."
+          echo "✅ Build encontrado:"
+          ls -la dist
 
-      # 6️⃣ Deploy via FTP para Locaweb
       - name: Deploy via FTP para Locaweb
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.HOST }}                 # ftp.gisassessoriacontabil.com.br
-          username: ${{ secrets.USER }}               # gisassessoriacon1
-          password: ${{ secrets.PASS }}               # senha do FTP
+          server: ${{ secrets.HOST }}       # ex: ftp.gisassessoriacontabil.com.br
+          username: ${{ secrets.USER }}     # ex: gisassessoriacon1
+          password: ${{ secrets.PASS }}
           protocol: ftp
           port: 21
-          local-dir: ./dist/                          # pasta do build do Vite
-          server-dir: /home/gisassessoriacon1/        # raiz pública da Locaweb
-          timeout: 60000
+
+          # 👉 envia o CONTEÚDO do build
+          local-dir: ./dist/
+
+          # 👉 pasta pública do site na Locaweb
+          server-dir: /public_html/
+
           log-level: verbose
+          timeout: 60000
+          dangerous-clean-slate: true
           exclude: |
             **/.git*
             **/.github*
