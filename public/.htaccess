@@ -2,6 +2,11 @@ Options -MultiViews
 RewriteEngine On
 RewriteBase /
 
+# 🔐 Forçar HTTPS
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# 🔄 SPA (React/Vite) - mantém o comportamento de single page app
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ index.html [L]
