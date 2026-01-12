@@ -15,7 +15,6 @@ import Igor from "@/assets/Igor.jpeg";
 import Isabel from "@/assets/Isabel.jpeg";
 import Mauren from "@/assets/Mauren.jpeg";
 import Rita from "@/assets/Rita.jpeg";
-import Roger from "@/assets/Roger.jpeg";
 import Tainara from "@/assets/Tainara.jpeg";
 import William from "@/assets/William.jpeg";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
@@ -46,11 +45,6 @@ const TEAM_MEMBERS = [
     name: "William",
     role: "Departamento Fiscal",
     photo: William,
-  },
-  {
-    name: "Roger",
-    role: "Departamento Contábil",
-    photo: Roger,
   },
   {
     name: "Mauren",
@@ -260,7 +254,7 @@ const About = () => {
               </div>
             ) : (
               <iframe
-                src="https://www.youtube.com/embed/hFH7JUGgCvM?autoplay=1&mute=1&modestbranding=1&rel=0&controls=1"
+                src="https://www.youtube.com/embed/G3oBi5d3qE0"
                 title="Vídeo Institucional - Gis Assessoria Contábil"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

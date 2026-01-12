@@ -48,7 +48,7 @@ const Footer = () => {
             <div className="space-y-3 text-center">
               <div className="flex justify-center items-center space-x-3">
                 <MapPin className="h-4 w-4 text-accent" />
-                <span className="text-sm">Rua Júlio de Castilhos, 849 - Faxinal do Soturno/RS</span>
+                <span className="text-sm">Rua Júlio de Castilhos 1018 sala 101 centro Faxinal do Soturno RS</span>
               </div>
               <div className="flex justify-center items-center space-x-3">
                 <Phone className="h-4 w-4 text-accent" />

@@ -31,16 +31,9 @@ const Location = () => {
               <CardContent className="space-y-4 text-left">
                 <div>
                   <p className="font-medium text-muted-foreground">
-                    Rua Júlio de Castilhos, 849
+                    Rua Júlio de Castilhos 1018 sala 101
                   </p>
-                  <p className="text-muted-foreground">Centro, Sala 849</p>
-                  <p className="text-muted-foreground">
-                    Faxinal do Soturno - RS, 97220-000
-                  </p>
-                </div>
-                <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-                  <Package className="h-4 w-4" />
-                  <span>Em frente aos Correios</span>
+                  <p className="text-muted-foreground">Centro - Faxinal do Soturno RS</p>
                 </div>
               </CardContent>
             </Card>
@@ -119,7 +112,7 @@ const Location = () => {
               <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl sm:aspect-[3/2] lg:aspect-[4/3]">
                 <iframe
                   title="Fachada GIS Assessoria Contábil"
-                  src="https://www.google.com/maps/embed?pb=!4v1725504799183!6m8!1m7!1sCAoSLEFGMVFpcFBueW83dGtsSDRVcDg1ckxNVkxheS1fM0FoYnF1NUh6WHdjdHkt!2m2!1d-29.5786997!2d-53.4447395!3f159.65!4f0!5f0.7820865974627469"
+                  src="https://www.google.com/maps?q=R.+J%C3%BAlio+de+Castilhos,+1018+-+101,+Faxinal+do+Soturno+-+RS,+97220-000&output=embed"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
