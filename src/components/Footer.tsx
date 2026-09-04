@@ -131,6 +131,16 @@ const Footer = () => {
             <p className="text-xs text-primary-foreground/60">
               CNPJ: 21.897.803/0001-60 | Responsável Técnico: Gilberto Scolari - CRC/MT-009477/O
             </p>
+            <p className="mt-2 text-xs text-primary-foreground/60">
+              <a
+                href="https://www.instagram.com/arthurzanon.dev/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-smooth hover:text-accent hover:underline"
+              >
+                Desenvolvido por Zanon de Andrade Softwares - CNPJ: 57.971.378/0001-50
+              </a>
+            </p>
           </div>
         </div>
       </div>
